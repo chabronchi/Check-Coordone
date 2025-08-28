@@ -14,28 +14,42 @@ export default function Home() {
 
   // ✅ Remplace ces valeurs par les réponses exactes
   const correctAnswers = {
-    A: "42",
-    B: "7",
-    C: "3",
+    A: "53",
+    B: "18",
+    C: "7",
     D: "13",
     E: "54",
     F: "3",
   };
 
-  const checkAnswers = () => {
-    let allGood = true;
-    for (const key in correctAnswers) {
-      if (answers[key].trim() !== correctAnswers[key]) {
+const checkAnswers = () => {
+  let allGood = true;
+  for (const key in correctAnswers) {
+    const user = answers[key].trim();
+    const correct = correctAnswers[key].toString().trim();
+
+    // Comparaison numérique si possible
+    if (!isNaN(correct) && !isNaN(user)) {
+      if (parseInt(user) !== parseInt(correct)) {
+        allGood = false;
+        break;
+      }
+    } else {
+      // Comparaison texte, insensible à la casse
+      if (user.toLowerCase() !== correct.toLowerCase()) {
         allGood = false;
         break;
       }
     }
-    setResult(
-      allGood
-        ? "✨ Bravo ! Tu as trouvé le trésor magique !"
-        : "❌ Certaines réponses sont incorrectes..."
-    );
-  };
+  }
+
+  setResult(
+    allGood
+      ? "✨ Bravo ! Tu as trouvé le trésor magique !"
+      : "❌ Certaines réponses sont incorrectes..."
+  );
+};
+
 
   return (
     <div
