@@ -22,16 +22,34 @@ export default function EnigmeChecker() {
     F: "3",
   };
 
-  const checkAnswers = () => {
-    let allGood = true;
-    for (const key in correctAnswers) {
-      if (answers[key].trim() !== correctAnswers[key]) {
+const checkAnswers = () => {
+  let allGood = true;
+  for (const key in correctAnswers) {
+    const user = answers[key].trim();
+    const correct = correctAnswers[key].toString().trim();
+
+    // Comparaison numérique si possible
+    if (!isNaN(correct) && !isNaN(user)) {
+      if (parseInt(user) !== parseInt(correct)) {
+        allGood = false;
+        break;
+      }
+    } else {
+      // Comparaison texte, insensible à la casse
+      if (user.toLowerCase() !== correct.toLowerCase()) {
         allGood = false;
         break;
       }
     }
-    setResult(allGood ? "✨ Bravo ! Tu as trouvé le trésor magique !" : "❌ Certaines réponses sont incorrectes...");
-  };
+  }
+
+  setResult(
+    allGood
+      ? "✨ Bravo ! Tu as trouvé le trésor magique !"
+      : "❌ Certaines réponses sont incorrectes..."
+  );
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 to-indigo-900 flex flex-col items-center justify-center text-white p-6">
