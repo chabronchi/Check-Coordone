@@ -14,9 +14,9 @@ export default function EnigmeChecker() {
 
   // ✅ Remplace par les vraies réponses une fois que tu les connais
   const correctAnswers = {
-    A: "42",
-    B: "7",
-    C: "3",
+    A: "53",
+    B: "18",
+    C: "7",
     D: "13",
     E: "54",
     F: "3",
