@@ -45,7 +45,7 @@ const checkAnswers = () => {
 
   setResult(
     allGood
-      ? "✨ Bravo ! Tu as trouvé le trésor magique !"
+      ? "✨ Bravo ! Tu as toute les bonnes réponses, tu peux chercher le trésor !"
       : "❌ Certaines réponses sont incorrectes..."
   );
 };
