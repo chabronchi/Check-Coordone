@@ -65,7 +65,7 @@ const checkAnswers = () => {
       }}
     >
       <h1 style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "20px" }}>
-        🔮 Le Défi des Énigmes
+        🔮 Vérificateur de réponses 🔮
       </h1>
       <div style={{ display: "grid", gap: "10px", width: "100%", maxWidth: "400px" }}>
         {Object.keys(answers).map((key) => (
